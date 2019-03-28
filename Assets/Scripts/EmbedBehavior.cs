@@ -5,6 +5,8 @@ using UnityEngine;
 public class EmbedBehavior : MonoBehaviour {
 
     Rigidbody rb;
+    public AudioSource audioSource;
+    public AudioClip groundHit;
 
 	// Use this for initialization
 	void Start () {
@@ -23,5 +25,7 @@ public class EmbedBehavior : MonoBehaviour {
         rb.velocity = Vector3.zero;
         rb.useGravity = false;
         rb.isKinematic = true;
+        audioSource.clip = groundHit;
+        audioSource.Play();
     }
 }

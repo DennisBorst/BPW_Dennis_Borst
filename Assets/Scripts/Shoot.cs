@@ -15,6 +15,9 @@ public class Shoot : MonoBehaviour {
     public int numberOfArrows = 0;
     bool arrowSlotted = false;
     float pullAmount = 0;
+
+    public AudioSource audioSource;
+    public AudioClip pull;
 	
 	// Update is called once per frame
 	void Update () {
@@ -50,6 +53,11 @@ public class Shoot : MonoBehaviour {
             Rigidbody _arrowRigidb = arrow.transform.GetComponent<Rigidbody>();
             ProjectileAddForce _arrowProjectile = arrow.transform.GetComponent<ProjectileAddForce>();
 
+            if (Input.GetMouseButtonDown(0))
+            {
+                audioSource.clip = pull;
+                audioSource.Play();
+            }
             if (Input.GetMouseButton(0))
             {
                 pullAmount += Time.deltaTime * pullSpeed;

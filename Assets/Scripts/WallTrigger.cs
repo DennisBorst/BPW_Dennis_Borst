@@ -9,6 +9,7 @@ public class WallTrigger : MonoBehaviour {
     public bool targetHit = false;
     public GameObject thisTarget;
     public GameObject greenTarget;
+    public AudioSource audioSource;
 
     private void Start()
     {
@@ -16,10 +17,11 @@ public class WallTrigger : MonoBehaviour {
         gate2.enabled = false;
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "projectiles")
         {
+            audioSource.Play();
             targetHit = true;
             gate1.enabled = true;
             gate2.enabled = true;
